@@ -1,0 +1,41 @@
+<script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+
+var liffID = '2007683798-qyWZR2ep';
+
+liff.init({
+  liffId: liffID
+}).then(function() {
+  console.log('LIFF init');
+  
+  // 這邊開始寫使用其他功能
+  
+}).catch(function(error) {
+  console.log(error);
+});
+
+// 引用 LIFF SDK 的頁面，頁面中的 lang 值
+liff.getLanguage();
+
+// LIFF SDK 的版本
+liff.getVersion();
+
+// 回傳是否由 LINE App 存取
+liff.isInClient();
+
+// 使用者是否登入 LINE 帳號
+liff.isLoggedIn();
+
+// 回傳使用者作業系統ios、android、web
+liff.getOS();
+
+// 使用者的 LINE 版本
+liff.getLineVersion();
+
+// 登入
+liff.login({
+  // 使用者登入後要去到哪個頁面
+  redirectUri: 'https://www.xxxxxxx.com.tw'
+});
+
+// 登出
+liff.logout();
