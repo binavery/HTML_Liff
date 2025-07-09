@@ -6,50 +6,6 @@
     <title>取得 LIFF User ID</title>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/sdk/v2/liff.js"></script>
 </head>
-<body>
-    <h1>LIFF 使用者 ID 範例</h1>
-    <p>您的 LINE User ID 是：<span id="userIdDisplay">載入中...</span></p>
 
-    <script>
-        // *** 重要：請替換成你的 LIFF ID ***
-        const LIFF_ID = '2007683798-qyWZR2ep'; 
-
-        async function initializeLiff() {
-            try {
-                await liff.init({ liffId: LIFF_ID });
-                console.log('LIFF 初始化成功！');
-                getAndDisplayUserProfile();
-            } catch (error) {
-                console.error('LIFF 初始化失敗：', error);
-                document.getElementById('userIdDisplay').textContent = 'LIFF 初始化失敗，請檢查 LIFF ID 或網路連線。';
-            }
-        }
-
-        async function getAndDisplayUserProfile() {
-            // 檢查用戶是否已透過 LIFF 登入
-            if (!liff.isLoggedIn()) {
-                console.log('用戶未登入，導向登入頁面...');
-                // 導向 LINE 登入頁面，登入成功後會自動跳回你的 LIFF 應用程式
-                liff.login(); 
-                return; // 終止函式執行，等待登入回傳
-            }
-
-            try {
-                // 取得使用者個人資料
-                const profile = await liff.getProfile();
-                const userId = profile.userId; // 從個人資料中取得 userId
-                
-                console.log('取得使用者資料：', profile);
-                document.getElementById('userIdDisplay').textContent = userId;
-
-            } catch (error) {
-                console.error('取得使用者資料失敗：', error);
-                document.getElementById('userIdDisplay').textContent = '無法取得使用者 ID。請確認您已授予權限。';
-            }
-        }
-
-        // 當網頁載入完成時呼叫初始化函式
-        window.onload = initializeLiff;
-    </script>
-</body>
+    
 </html>
