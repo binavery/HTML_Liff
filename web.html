@@ -7,5 +7,55 @@
     <script charset="utf-8" src="https://static.line-scdn.net/liff/sdk/v2/liff.js"></script>
 </head>
 
+<body>
+    <h1>LIFF 使用者 ID 範例</h1>
+    <p>您的 LINE User ID 是：<span id="userIdDisplay">載入中...</span></p>
+
+    <script>
+        import liff from '@line/liff';
+        // *** 重要：請替換成你的 LIFF ID ***
+        const LIFF_ID = '2007683798-qyWZR2ep'; 
+
+        liff.init({
+        liffId: liffId
+            }).then(function() {
+        console.log('LIFF init');
+
+        // 這邊開始寫使用其他功能
+
+        }).catch(function(error) {
+            console.log(error);
+        });
+
+        const OS = liff.getOS();
+            // ios || android || web
+        const language = liff.getLanguage();
+        const version = liff.getVersion();
+        const lineVersion = liff.getLineVersion();
+        const context = liff.getContext();
+
+        const isInClient = liff.isInClient();
+        // true || false
+
+        const isLoggedIn = liff.isLoggedIn();
+        // true || false
+
+        if (liff.isApiAvailable('shareTargetPicker')) {
+  liff.shareTargetPicker([
+    {
+      type: "text",
+      text: "Hello, World!"
+    }
+  ])
+    .then(
+      console.log("ShareTargetPicker was launched")
+    ).catch(function(res) {
+      console.log("Failed to launch ShareTargetPicker")
+    })
+}
+
+
+    </script>
+</body>
     
 </html>
