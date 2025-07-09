@@ -54,6 +54,19 @@
     })
 }
 
+            liff.login();
+    const accessToken = liff.getAccessToken();
+if (accessToken) {
+  fetch("https://api...", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    //...
+  });
+}
+
+    const profile = liff.getProfile()
 
     </script>
 </body>
